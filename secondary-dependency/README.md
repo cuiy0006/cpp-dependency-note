@@ -141,5 +141,5 @@
 ```
 
 ### Difference between rpath and rpath-link
-    rpath-link is linting time path for dynamic libs, while rpath is for both linting time and runtime.  
+    rpath-link is linking time path for dynamic libs, while rpath is for both linking time and runtime.  
     when rpath doesn't work, use -Wl,--disable-new-dtags  
