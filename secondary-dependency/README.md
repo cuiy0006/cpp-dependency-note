@@ -143,3 +143,23 @@
 ### Difference between rpath and rpath-link
     rpath-link is linting time path for dynamic libs, while rpath is for both linting time and runtime.  
     when rpath doesn't work, use -Wl,--disable-new-dtags  
+
+
+### Display shared lib searching process when run execuable
+```
+    LD_DEBUG=libs LD_LIBRARY_PATH=$(pwd) ./app
+
+    2817:     find library=libbar_shared_foo.so [0]; searching
+    2817:      search path=/home/cuiy0006/Projects/shared/secondary-dependency/tls/haswell/x86_64:/home/cuiy0006/Projects/shared/secondary-dependency/tls/haswell:/home/cuiy0006/Projects/shared/secondary-dependency/tls/x86_64:/home/cuiy0006/Projects/shared/secondary-dependency/tls:/home/cuiy0006/Projects/shared/secondary-dependency/haswell/x86_64:/home/cuiy0006/Projects/shared/secondary-dependency/haswell:/home/cuiy0006/Projects/shared/secondary-dependency/x86_64:/home/cuiy0006/Projects/shared/secondary-dependency          (LD_LIBRARY_PATH)
+    2817:       trying file=/home/cuiy0006/Projects/shared/secondary-dependency/tls/haswell/x86_64/libbar_shared_foo.so
+    2817:       trying file=/home/cuiy0006/Projects/shared/secondary-dependency/tls/haswell/libbar_shared_foo.so
+    2817:       trying file=/home/cuiy0006/Projects/shared/secondary-dependency/tls/x86_64/libbar_shared_foo.so
+    2817:       trying file=/home/cuiy0006/Projects/shared/secondary-dependency/tls/libbar_shared_foo.so
+    2817:       trying file=/home/cuiy0006/Projects/shared/secondary-dependency/haswell/x86_64/libbar_shared_foo.so
+    2817:       trying file=/home/cuiy0006/Projects/shared/secondary-dependency/haswell/libbar_shared_foo.so
+    2817:       trying file=/home/cuiy0006/Projects/shared/secondary-dependency/x86_64/libbar_shared_foo.so
+    2817:       trying file=/home/cuiy0006/Projects/shared/secondary-dependency/libbar_shared_foo.so
+    ......
+    ......
+```
+
