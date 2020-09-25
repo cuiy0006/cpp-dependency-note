@@ -140,6 +140,18 @@
     $ LD_LIBRARY_PATH=$(pwd) ./app
 ```
 
+```
+    $ gcc -o app main.c -L$(pwd) -lbar_shared_foo libfoo.so
+        $ readelf -d app
+        0x0000000000000001 (NEEDED)             Shared library: [libbar_shared_foo.so]
+        0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+        $ nm app
+                         U bar
+        000000000000071a T main
+    
+    $ LD_LIBRARY_PATH=$(pwd) ./app
+```
+
 ### Difference between rpath and rpath-link
     rpath-link is linting time path for dynamic libs, while rpath is for both linting time and runtime.  
     when rpath doesn't work, use -Wl,--disable-new-dtags  
