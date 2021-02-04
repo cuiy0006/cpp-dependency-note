@@ -105,6 +105,10 @@ $ ldd main
 ld uses libfoo.so -> libfoo.so.1
 ld read soname(libfoo.so.1) from realname lib(libfoo.so.1.0.0)
 
+**How to get soname from a shared lib?**
+objdump -p libfoo.so.1.0.0 | grep SONAME  
+objdump -p libfoo.so | grep SONAME  
+
 ```
 $ gcc -g -o main main.c -lfoo
 ```
